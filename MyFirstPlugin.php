@@ -18,21 +18,14 @@
         die('The access is Refused');
     }
 
-    define( 'PLUGIN_PATH', plugin_dir_path( __FILE__ ));
-    define( 'PLUGIN_URL',plugin_dir_url( __FILE__ ));
-    define('PLUGIN_BASE_NAME', plugin_basename( __FILE__ ));
-
-    use Inc\Base\Activate;
-    use Inc\Base\Deactivate;
-
     function PluginActivate()
     {
-        Activate::activate();
+        Inc\Base\Activate::activate();
     }
 
     function PluginDeactivate()
     {
-        Deactivate::deactivate();
+        Inc\Base\Deactivate::deactivate();
     }
 
     register_activation_hook( __FILE__, 'PluginActivate') ;

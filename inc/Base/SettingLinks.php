@@ -6,18 +6,13 @@
 
     namespace Inc\Base;
 
-    class SettingLinks 
-    {
-        protected $basename;
+    use Inc\Base\Construct;
 
-        function __construct()
-        {
-            $this->basename = PLUGIN_BASE_NAME;
-        }
+    class SettingLinks extends Construct
+    {
         public function register()
         {
-            add_filter( "plugin_action_links_$this->basename", array( $this, 'settings_link' ) );
-
+            add_filter( "plugin_action_links_$this->plugin_basename", array( $this, 'settings_link' ) );
         }
 
         public function settings_link( $links ){

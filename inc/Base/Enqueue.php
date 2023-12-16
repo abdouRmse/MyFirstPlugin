@@ -10,7 +10,9 @@
 
     namespace Inc\Base;
 
-    class Enqueue 
+    use Inc\Base\Construct;
+
+    class Enqueue extends Construct
     {
         public function register()
         {
@@ -20,8 +22,8 @@
         // Enqueue all the files that i need
         function enqueue() 
         {
-            wp_enqueue_style( ' my_custom_style ', PLUGIN_URL. 'assets/custom_style.css');
-            wp_enqueue_script( ' my_custom_js ', PLUGIN_URL. 'assets/custom_js.js', array(), true);
+            wp_enqueue_style( ' my_custom_style ', $this->plugin_url. 'assets/custom_style.css');
+            wp_enqueue_script( ' my_custom_js ', $this->plugin_url. 'assets/custom_js.js', array(), true);
         }
     }
 
