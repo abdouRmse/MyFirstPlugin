@@ -1,6 +1,10 @@
 <?php
 
-    namespace Inc;
+    /**
+     * @package MyFirstPlugin
+     */
+
+    namespace Inc\Base;
 
     class Deactivate
     {

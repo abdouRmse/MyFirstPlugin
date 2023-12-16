@@ -4,7 +4,7 @@
     "license": "GPL",
     "autoload": {
         "psr-4": {
-            "Inc\\": "./inc"
+            "Inc\\": "inc/"
         }
     },
     "authors": [
@@ -13,6 +13,6 @@
             "email": "abdennour.aze@gmail.com"
         }
     ],
-    "minimum-stability": "dev",
-    "require": {}
+    "require": {},
+    "minimum-stability": "dev"
 }
