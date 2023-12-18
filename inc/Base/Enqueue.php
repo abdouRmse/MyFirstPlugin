@@ -24,6 +24,9 @@
         {
             wp_enqueue_style( ' my_custom_style ', $this->plugin_url. 'assets/custom_style.css');
             wp_enqueue_script( ' my_custom_js ', $this->plugin_url. 'assets/custom_js.js', array(), true);
+            wp_enqueue_script( ' bootstrap_js ', $this->plugin_url. 'assets/bootstrap/js/bootstrap.min.js', array(), true);
+            wp_enqueue_style( ' bootstrap_css ', $this->plugin_url. 'assets/bootstrap/css/bootstrap.min.css');
+
         }
     }
 
