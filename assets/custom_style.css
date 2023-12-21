@@ -1,0 +1,30 @@
+.nav-tabs > li{
+    background-color:rgb(197 197 197);
+    padding: 10px;
+    border-left: 1px #8f8d8d solid;
+    cursor: pointer;
+}
+
+.nav-tabs > li a{
+    color: #444040;
+    text-decoration: none;
+}
+
+
+.nav-tabs > li.active{
+    background-color: rgb(255, 255, 255);
+    border-left: 3px solid green;
+}
+
+.nav-tabs > li.active a{
+    color: green;
+    font-weight: bold;
+}
+
+.tab-content .tab-pane{
+    display: none;
+}
+
+.tab-content .tab-pane.active{
+    display: block;
+}
