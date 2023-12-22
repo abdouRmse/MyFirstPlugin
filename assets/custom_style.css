@@ -28,3 +28,23 @@
 .tab-content .tab-pane.active{
     display: block;
 }
+
+/* checkbox dashboard : */
+input[type=checkbox]{
+    background-color: transparent;
+}
+
+input[type=checkbox]:checked::before {
+    content: "";
+}
+
+.ui_toggle th,
+.ui_toggle td
+{
+    padding: 20px;
+}
+
+.ui_toggle td .form-check{
+    display: flex;
+    align-items: center;
+}

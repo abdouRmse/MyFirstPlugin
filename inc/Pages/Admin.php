@@ -10,6 +10,7 @@
     use \Inc\Api\SettingsApi;
     use \Inc\Api\Callbacks\AdminCallbacks;
     use \Inc\Api\Callbacks\optionsGroup;
+    use \Inc\Api\Callbacks\ManagerCallbacks;
 
     class Admin extends Construct  // the extends let the Admine to construct all the variables.
     {
@@ -18,11 +19,13 @@
         public $admin_sub_menu_pages; // ARRAY of the submenus
         public $dashboard_callbacks; // INSTANCE of  all the dashboard callbacks
         public $fields_callbacks;
+        public $setting_callbacks;
 
         public function register()
         {
 
             $this->setting = new SettingsApi();
+            $this->setting_callbacks = new ManagerCallbacks;
 
             $this-> setSettings();
             $this-> setSections();
@@ -98,7 +101,7 @@
                 [
                     'id'         => 'section_id',
                     'title'      => 'SECTION',
-                    'callback'   => function(){ echo 'check this section';},
+                    'callback'   => array($this->setting_callbacks, 'adminSectionManager'),
                     'page'       => 'menu_my_first_plugin_id',
                     'args'       => ''
                 ]
@@ -121,13 +124,43 @@
             $args = array(
                 [
                     'option_group'  =>  'plugin_option_group',
-                    'option_name'   =>  'text_exemple',
-                    'callback'      =>  function(){ echo 'hi hi hi';}
+                    'option_name'   =>  'cpt_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
                 ],
                 [
                     'option_group'  =>  'plugin_option_group',
-                    'option_name'   =>  'first_name',
-                    'callback'      =>  function(){ echo 'hi hi hi';}
+                    'option_name'   =>  'taxonomy_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
+                ],
+                [
+                    'option_group'  =>  'plugin_option_group',
+                    'option_name'   =>  'media_widget',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
+                ],
+                [
+                    'option_group'  =>  'plugin_option_group',
+                    'option_name'   =>  'gallery_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
+                ],
+                [
+                    'option_group'  =>  'plugin_option_group',
+                    'option_name'   =>  'testimonial_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
+                ],
+                [
+                    'option_group'  =>  'plugin_option_group',
+                    'option_name'   =>  'login_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
+                ],
+                [
+                    'option_group'  =>  'plugin_option_group',
+                    'option_name'   =>  'membership_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
+                ],
+                [
+                    'option_group'  =>  'plugin_option_group',
+                    'option_name'   =>  'chat_manager',
+                    'callback'      =>  array($this->setting_callbacks, 'checkboxSanitize')
                 ]
             );
 
@@ -150,23 +183,91 @@
             $this->fields_callbacks = new optionsGroup;
             $args = array(
                 [
-                    'id'         => 'text_exemple', 
-                    'title'      => 'Text Exemple',
-                    'callback'   => array( $this->fields_callbacks, 'idCustomField'),
+                    'id'         => 'cpt_manager', 
+                    'title'      => 'Activate CPT Manager',
+                    'callback'   => array( $this->setting_callbacks, 'checkboxField'),
                     'page'       => 'menu_my_first_plugin_id',
                     'section'       => 'section_id',
                     'args'       => array(
-                        'label_for'         =>  'text_exemple',
+                        'label_for'         =>  'cpt_manager',
+                        'class'             =>  'ui_toggle form-check-input'
                     )
                 ],
                 [
-                    'id'         => 'first_name', 
-                    'title'      => 'First Name',
-                    'callback'   => array( $this->fields_callbacks, 'idCustomField'),
+                    'id'         => 'taxonomy_manager', 
+                    'title'      => 'Activate Taxonomy',
+                    'callback'   =>  array( $this->setting_callbacks, 'checkboxField'),
                     'page'       => 'menu_my_first_plugin_id',
                     'section'       => 'section_id',
                     'args'       => array(
-                        'label_for'         =>  'text_exemple',
+                        'label_for'         =>  'taxonomy_manager',
+                        'class'             =>  'ui_toggle form-check-input'
+                    )
+                ],
+                [
+                    'id'         => 'media_widget', 
+                    'title'      => 'Activate Widget',
+                    'callback'   => array( $this->setting_callbacks, 'checkboxField'),
+                    'page'       => 'menu_my_first_plugin_id',
+                    'section'       => 'section_id',
+                    'args'       => array(
+                        'label_for'         =>  'media_widget',
+                        'class'             =>  'ui_toggle form-check-input'
+                    )
+                ],
+                [
+                    'id'         => 'gallery_manager', 
+                    'title'      => 'Activate Gallery',
+                    'callback'   => array( $this->setting_callbacks, 'checkboxField'),
+                    'page'       => 'menu_my_first_plugin_id',
+                    'section'       => 'section_id',
+                    'args'       => array(
+                        'label_for'         =>  'gallery_manager',
+                        'class'             =>  'ui_toggle form-check-input'
+                    )
+                ],
+                [
+                    'id'         => 'testimonial_manager', 
+                    'title'      => 'Activate Testimonial',
+                    'callback'   => array( $this->setting_callbacks, 'checkboxField'),
+                    'page'       => 'menu_my_first_plugin_id',
+                    'section'       => 'section_id',
+                    'args'       => array(
+                        'label_for'         =>  'testimonial_manager',
+                        'class'             =>  'ui_toggle form-check-input'
+                    )
+                ],
+                [
+                    'id'         => 'login_manager', 
+                    'title'      => 'Activate Login Manager',
+                    'callback'   =>  array( $this->setting_callbacks, 'checkboxField'),
+                    'page'       => 'menu_my_first_plugin_id',
+                    'section'       => 'section_id',
+                    'args'       => array(
+                        'label_for'         =>  'login_manager',
+                        'class'             =>  'ui_toggle form-check-input'
+                    )
+                ],
+                [
+                    'id'         => 'membership_manager', 
+                    'title'      => 'Activate Membership Manager',
+                    'callback'   => array( $this->setting_callbacks, 'checkboxField'),
+                    'page'       => 'menu_my_first_plugin_id',
+                    'section'       => 'section_id',
+                    'args'       => array(
+                        'label_for'         =>  'membership_manager',
+                        'class'             =>  'ui_toggle form-check-input'
+                    )
+                ],
+                [
+                    'id'         => 'chat_manager', 
+                    'title'      => 'Activate Chat Manager',
+                    'callback'   => array( $this->setting_callbacks, 'checkboxField'),
+                    'page'       => 'menu_my_first_plugin_id',
+                    'section'       => 'section_id',
+                    'args'       => array(
+                        'label_for'         =>  'chat_manager',
+                        'class'             =>  'ui_toggle form-check-input'
                     )
                 ]
             );
