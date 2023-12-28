@@ -1,0 +1,32 @@
+{
+  "name": "myfirstplugin",
+  "version": "1.0.0",
+  "description": "this is my first wordpress plugin, i made sevral features inside it",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/abdouRmse/MyFirstPlugin.git"
+  },
+  "author": "abdenour koudache",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/abdouRmse/MyFirstPlugin/issues"
+  },
+  "homepage": "https://github.com/abdouRmse/MyFirstPlugin#readme",
+  "devDependencies": {
+    "gulp": "^4.0.2",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.7.0",
+    "gulp-sass": "^5.1.0",
+    "sass": "^1.69.5"
+  },
+  "dependencies": {
+    "gulp-livereload": "^4.0.2",
+    "gulp-watch": "^5.0.1",
+    "gulp-webserver": "^0.9.1",
+    "static-server": "^2.2.1"
+  }
+}
